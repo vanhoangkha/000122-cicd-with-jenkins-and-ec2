@@ -1,0 +1,141 @@
+[
+{
+	"uri": "/3-createec2/3.1-createec2/",
+	"title": "Create EC2",
+	"tags": [],
+	"description": "",
+	"content": " Access the AWS Management Console interface: Navigate to EC2 Choose EC2 Within the EC2 interface: Select Instance Click on Launch instances Provide a Name and tags for the instance, enter Java Server: Choose the Application and OS Images (Amazon Machine Image Select Quick Start Choose Ubuntu Select an AMI Select an Instance type and opt to Create a new key pair In the Create key pair interface: Specify the Key pair name, e.g., demo-jenkins-ec2 (optional name, you can set any). Choose Key pair type: RSA Select Private key file format: .pem Configure the Network: For Firewall (Security Group), select Select existing security group Choose JavaServerSG Click Launch instance Complete the instance creation Wait for about 5 minutes until the Status check shows 2/2 checks passed "
+},
+{
+	"uri": "/",
+	"title": "Demo simple CICD with Jenkins and EC2",
+	"tags": [],
+	"description": "",
+	"content": "Implement CICD for Java Springboot project using Jenkins and EC2 server Overview This tutorial will guide you through implementing a very basic Continuous Integration/Continuous Deployment (CI/CD) pipeline using Jenkins to deploy a Spring Boot project to an EC2 instance as a Linux server. Given the scope of this lab, we will implement only the simplest elements to provide a basic hands-on learning experience. Now, let\u0026rsquo;s dive into it!\nContent Introduce Preparation Steps Create EC2 Instance Config Jenkins Demo Resource Cleanup "
+},
+{
+	"uri": "/4-setupjenkins/4.1-installplugins/",
+	"title": "Install and Configure Plugins",
+	"tags": [],
+	"description": "",
+	"content": "Installs Publish Over SSH plugins Opens web browser and accesses localhost:8080, then selects Manage Jenkins Selects Plugins Installs Publish Over SSH plugin: Select Available Plugins Search SSH Choose Publish Over SSH plugin Select Install Waits for installation and navigates back to Dashboard Configures Gradle 8.6 In Dashboard, selects Manage Jenkins, then selects Tools Configures Gradle 8.6 for Package Manager Scrolls to Gradle Installation Chooses Add gradle name: Enter gradle 8.6 Version: Select Gradle 8.6 Select Save "
+},
+{
+	"uri": "/1-introduce/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "A briefly introduction about theory of Amazon EC2 and Jenkins\nContents Amazon EC2 Jenkins "
+},
+{
+	"uri": "/1-introduce/1.1-ec2/",
+	"title": "Introduction to EC2",
+	"tags": [],
+	"description": "",
+	"content": "Amazon EC2 (Elastic Compute Cloud) is a foundational piece of AWS\u0026rsquo;s cloud computing platform, offering scalable virtual server capacity. EC2 provides users with flexible computing power, allowing them to easily scale up or down based on their needs. This service simplifies web-scale cloud computing by enabling developers and businesses to run applications and services on a global network of Amazon\u0026rsquo;s managed data centers. Users can select from a variety of instance types, operating systems, and software packages, making EC2 suitable for a wide range of computing tasks, from serving web applications to running large-scale distributed systems. With EC2, you pay only for the compute time you use, making it a cost-effective solution for many computing scenarios.\nFor this tutorial, we will use EC2 as a linux server to deploy our Java Springboot project\n"
+},
+{
+	"uri": "/2-preparation-steps/2.1-setupjenkinsserver/",
+	"title": "Set up Jenkins server",
+	"tags": [],
+	"description": "",
+	"content": "Prerequisite We will run our Jenkins server using Docker, so a Docker environment is required:\nFor MacOs/Window: install Docker Desktop. For Linux: install Docker. Set up Paste command docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts to your terminal docker run: Runs a Docker image. If the image is not available in local storage, it will be pulled from Docker Hub and run. -d: Runs the command in detached mode. -p 8080:8080: Maps Jenkins UI container\u0026rsquo;s port to host\u0026rsquo;s port. jenkins/jenkins:lts: Uses the latest Long-Term Support (LTS) Jenkins image. Uses docker ps to list running container.\nLogs Jenkins container and copy admin\u0026rsquo;s password: docker logs d338415bb43b Accesses to localhost:8080 and paste the password copied in step 2, then click on Continue button Clicks on Install suggested plugins and waits for all suggested plugins installed After installation, you can either regist for an admin account (don\u0026rsquo;t need to provide real info) and clicks on Save and Continue or just clicks on Skip. Then clicks on Start using Jenkins "
+},
+{
+	"uri": "/5-demo/5.1-triggerjob/",
+	"title": "Trigger Job",
+	"tags": [],
+	"description": "",
+	"content": " Navigates to Dashboard, then selects workshop1 Clicks on Build now to trigger Job After a while, Job returns build result. Selects Console Output to check output Based on log, we can see the Job build and deploy our Java Springboot project successfully! "
+},
+{
+	"uri": "/5-demo/5.2-checkresult/",
+	"title": "Check result",
+	"tags": [],
+	"description": "",
+	"content": " Navigate back to EC2 Instance Connect Paste command ps -aux | grep java to check for java process Paste command netstat -lnpt to check for port using in server Visit http://18.141.192.204:8080/ to access to webpage "
+},
+{
+	"uri": "/2-preparation-steps/2.2-configsg/",
+	"title": "Config Security Group",
+	"tags": [],
+	"description": "",
+	"content": " Accesses to AWS Console Searchs for Security Groups, then choose Security Group Clicks on Create security group Configures Security Group Security group name: Enter JavaServerSG Description: Enter Allows SSH for developers and 8080 port for users VPC: choose Default VPC In Inbound rules: Select Add rule Select Type: SSH Select Source: Anywhere-IPv4 Select Add rule Select Type: Custom TCP Select Port: 8080 Select Source: Anywhere-IPv4 Checks Outbound rules and clicks on Create security group "
+},
+{
+	"uri": "/3-createec2/3.2-installtools/",
+	"title": "Install Tools",
+	"tags": [],
+	"description": "",
+	"content": "Install necessary tools for Java server Accesses the AWS Management Console interface: Navigates to EC2 Chooses EC2 Chooses Instances Selects Java Server Clicks on Connect Chooses SSH type: Selects EC2 Instance Connect Clicks on Connect In EC2 Instance Connect, paste command to console sudo apt update \u0026amp;\u0026amp; sudo apt install openjdk-17-jre-headless -y \u0026amp;\u0026amp; sudo apt install net-tools -y Install Java 17 for running Java Springboot project Install net-tools for network troubleshoot "
+},
+{
+	"uri": "/1-introduce/1.2-jenkins/",
+	"title": "Introduction to Jenkins",
+	"tags": [],
+	"description": "",
+	"content": "Jenkins is an open-source automation server widely used for continuous integration and continuous delivery (CI/CD) in software development. It facilitates the automation of building, testing, and deploying code, making it easier for developers to integrate changes to the project and enabling quicker delivery of features and fixes. Jenkins supports various version control tools and can execute a series of scripts and commands in response to various triggers. With its extensive plugin ecosystem, Jenkins can be customized to fit almost any CI/CD need, from simple to complex workflows. It is designed to be both powerful and flexible, allowing teams to accelerate their software development processes efficiently. Jenkins can be run on most operating systems and is a pivotal tool for DevOps practices, enhancing collaboration and productivity across development and operations teams.\nFor this tutorial, we use Jenkins to create simple freestyle job to execute basic pipeline include: clone, clean, build, test, deploy.\n"
+},
+{
+	"uri": "/2-preparation-steps/",
+	"title": "Preparation Steps",
+	"tags": [],
+	"description": "",
+	"content": "To implement this tutorial, we require a Jenkins server. Additionally, we need to open port 22 (SSH) and port 8080 (Spring Boot) on our server to enable SSH access and web page access. Therefore, it is necessary to configure the Security Group (SG) in the Amazon Console.\nContents Set up Jenkins server Config Security Group "
+},
+{
+	"uri": "/4-setupjenkins/4.2-setupssh/",
+	"title": "Set up SSH",
+	"tags": [],
+	"description": "",
+	"content": " In Dashboard, selects Manage Jenkins, then selects System Scrolls to Publish Over SSH, then selects add in SSH Servers Copy public IPv4 address of EC2 Instance Use the public IP copied in step 3 to fill in information: Name: Java Server 18.141.192.204 (Java Server + Your IP) Hostname: ec2-18-141-192-204.ap-southeast-1.compute.amazonaws.com (Your Public IPv4 DNS) Username: ubuntu Remote Directory: / Copy private key demo-jenkins-ec2.pem Navigate back to Jenkins UI and fill in credential: Select Advanced Select Use password authentication, or use a different key Key: Enter Your private key (Copied from step 5) Test connection: Select Test Configuration to check connection result Select Save "
+},
+{
+	"uri": "/3-createec2/",
+	"title": "Create EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": "Content Create EC2 Install Tools "
+},
+{
+	"uri": "/4-setupjenkins/4.3-createfreestylejob/",
+	"title": "Create Free Style Job",
+	"tags": [],
+	"description": "",
+	"content": " Navigates to Dashboard, then selects New Item Enters workshop1, selects Freestyle project, then selects OK Configures Source Code Management Select Source Code Management Select Git Repository URL: https://github.com/MQuang200/SimpleJavaProject.git (This is my public repository for this demo) Branch Specifier: Enter */FCJ-workshop1 Configures clean step: Select Build Steps Select Add build step Select Invoke Gradle Script Gradle Version: Select gradle 8.6 Tasks: Enter clean Configures clean step: Select Build Steps Select Add build step Select Invoke Gradle Script Gradle Version: Select gradle 8.6 Tasks: Enter build Configures clean step: Select Build Steps Select Add build step Select Invoke Gradle Script Gradle Version: Select gradle 8.6 Tasks: Enter test Configures deploy step: Selects Post-build Actions Selects Add post-build action Select Send build artifacts over SSH Name: Select Java Server 18.141.192.204 (Java Server + Your IP) Source files: Enter build/libs/demo-0.0.1-SNAPSHOT.jar Base on build.gradle file in my project, demo-0.0.1-SNAPSHOT.jar will be built and placed in build/libs directory after build step\nRemove prefix: Enter build/libs We only want to send artifact file to server\nRemote directory: Enter /home/ubuntu Directory in server where Jenkins sends artifact to\nExec command: Enter screen -dmS demo java -jar demo-0.0.1-SNAPSHOT.jar Deploy Java Springboot jar file and attached process to a screen\n"
+},
+{
+	"uri": "/4-setupjenkins/",
+	"title": "Set up Jenkins",
+	"tags": [],
+	"description": "",
+	"content": "Content Install plugins Config SSH server and credential Create Freestyle job "
+},
+{
+	"uri": "/5-demo/",
+	"title": "Demo",
+	"tags": [],
+	"description": "",
+	"content": "We successfully create a freestyle job to handle CICD to EC2 instance. The whole project diagram is as below:\nContent: Trigger Job Check reuslt "
+},
+{
+	"uri": "/6-cleanup/",
+	"title": "Clean up resources",
+	"tags": [],
+	"description": "",
+	"content": "Terminate EC2 Instances Terminate EC2 instance:\nAccess the Amazon EC2 console at EC2. On the left navigation bar, select \u0026ldquo;Instances.\u0026rdquo; Select all EC2 instances related to the lab. Select Instance state. Select Terminate instance. Confirm termination.\nDelete Security Groups\nSelect Security Groups Select Java Server SG Select Actions Select Delete security groups Confirm delete "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
