@@ -4,7 +4,7 @@
     <title>Create EC2 on CICD with Jenkins and EC2</title>
     <link>/3-createec2/3.1-createec2/</link>
     <description>Recent content in Create EC2 on CICD with Jenkins and EC2</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="/3-createec2/3.1-createec2/index.xml" rel="self" type="application/rss+xml" />
   </channel>

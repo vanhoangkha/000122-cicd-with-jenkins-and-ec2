@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Set up SSH :: CICD with Jenkins and EC2</title>
 
     
-    <link href="../../css/nucleus.css?1716199513" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1716199513" rel="stylesheet">
-    <link href="../../css/hybrid.css?1716199513" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1716199513" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1716199513" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1716199513" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1716199513" rel="stylesheet">
-    <link href="../../css/theme.css?1716199513" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1716199513" rel="stylesheet">
+    <link href="../../css/nucleus.css?1733825239" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1733825239" rel="stylesheet">
+    <link href="../../css/hybrid.css?1733825239" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1733825239" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1733825239" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1733825239" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1733825239" rel="stylesheet">
+    <link href="../../css/theme.css?1733825239" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1733825239" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1716199513" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1733825239" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1716199513"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1733825239"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1716199513"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1716199513"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1733825239"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1733825239"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1716199513"></script>
+<script type="text/javascript" src="../../js/search.js?1733825239"></script>
 
     
   </div>
@@ -644,7 +644,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>26-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -734,15 +734,15 @@
 	<ol>
 <li>In <strong>Dashboard</strong>, selects <strong>Manage Jenkins</strong>, then selects <strong>System</strong></li>
 </ol>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/001.png" alt="Navigate to System"></p>
+<p><img alt="Navigate to System" src="../../images/4-SetUpJenkins/4.2-SetupSSH/001.png"></p>
 <ol start="2">
 <li>Scrolls to Publish Over SSH, then selects <strong>add</strong> in <strong>SSH Servers</strong></li>
 </ol>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/002.png" alt="Add SSH servers"></p>
+<p><img alt="Add SSH servers" src="../../images/4-SetUpJenkins/4.2-SetupSSH/002.png"></p>
 <ol start="3">
 <li>Copy public IPv4 address of EC2 Instance</li>
 </ol>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/003.png" alt="Copy public IP"></p>
+<p><img alt="Copy public IP" src="../../images/4-SetUpJenkins/4.2-SetupSSH/003.png"></p>
 <ol start="4">
 <li>Use the public IP copied in step 3 to fill in information:</li>
 </ol>
@@ -752,11 +752,11 @@
 <li><strong>Username</strong>: <code>ubuntu</code></li>
 <li><strong>Remote Directory</strong>: <code>/</code></li>
 </ul>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/004.png" alt="Basic SSH Info"></p>
+<p><img alt="Basic SSH Info" src="../../images/4-SetUpJenkins/4.2-SetupSSH/004.png"></p>
 <ol start="5">
 <li>Copy private key <strong>demo-jenkins-ec2.pem</strong></li>
 </ol>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/005.png" alt="Copy private key"></p>
+<p><img alt="Copy private key" src="../../images/4-SetUpJenkins/4.2-SetupSSH/005.png"></p>
 <ol start="6">
 <li>Navigate back to Jenkins UI and fill in credential:</li>
 </ol>
@@ -765,7 +765,7 @@
 <li>Select <strong>Use password authentication, or use a different key</strong></li>
 <li><strong>Key</strong>: Enter <strong>Your private key</strong> (Copied from step 5)</li>
 </ul>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/006.png" alt="Configure credential"></p>
+<p><img alt="Configure credential" src="../../images/4-SetUpJenkins/4.2-SetupSSH/006.png"></p>
 <ol start="7">
 <li>Test connection:</li>
 </ol>
@@ -773,7 +773,7 @@
 <li>Select <strong>Test Configuration</strong> to check connection result</li>
 <li>Select <strong>Save</strong></li>
 </ul>
-<p><img src="../../images/4-SetUpJenkins/4.2-SetupSSH/007.png" alt="Test Connection"></p>
+<p><img alt="Test Connection" src="../../images/4-SetUpJenkins/4.2-SetupSSH/007.png"></p>
 
 
 
@@ -1124,19 +1124,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1716199513"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1716199513"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1716199513"></script>
-    <script src="../../js/jquery.sticky.js?1716199513"></script>
-    <script src="../../js/featherlight.min.js?1716199513"></script>
-    <script src="../../js/highlight.pack.js?1716199513"></script>
+    <script src="../../js/clipboard.min.js?1733825240"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1733825240"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1733825240"></script>
+    <script src="../../js/jquery.sticky.js?1733825240"></script>
+    <script src="../../js/featherlight.min.js?1733825240"></script>
+    <script src="../../js/highlight.pack.js?1733825240"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1716199513"></script>
-    <script src="../../js/learn.js?1716199513"></script>
-    <script src="../../js/hugo-learn.js?1716199513"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1733825240"></script>
+    <script src="../../js/learn.js?1733825240"></script>
+    <script src="../../js/hugo-learn.js?1733825240"></script>
 
-    <link href="../../mermaid/mermaid.css?1716199513" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1716199513"></script>
+    <link href="../../mermaid/mermaid.css?1733825240" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1733825240"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
