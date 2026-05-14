@@ -1,6 +1,6 @@
 ---
 title : "Demo simple CICD with Jenkins and EC2"
-date : "`r Sys.Date()`"
+date: 2024-01-01
 weight : 1
 chapter : false
 ---
